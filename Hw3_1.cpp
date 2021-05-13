@@ -201,23 +201,144 @@ ostream& operator<<(ostream& os, List<T>& a)
 
 int main(void)
 {
-    List<int> a;
-    int n = 3;
-    a.InsertFront(n);
-    a.Insert(1, 4);
+    int type;
+    int n;
 
-    cout << a.Front();
-    cout << a.Back();
-    cout << a.Get(0);
-    cout << a;
-    a.InsertFront(5);
-    a.~List();
-    cout << a;
-    List<int>::Iterator i = a.Begin();
-    List<int>::Iterator j = a.Begin();
-    i++;
-    i++;
-    cout << *j;
+    cout << "Chosse the type, 1 is int and 2 is float:" << endl;
+    cin >> type;
+
+    if (type == 1) {
+        List<int> a;
+        int value;
+
+        cout << "Enter the number of nodes want to insert from front:" << endl;
+        cin >> n;
+
+        for (int i = 0; i < n; i++) {
+            cout << "Enter value:";
+            cin >> value;
+            a.InsertFront(value);
+        }
+        cout << a;
+        cout << "Front: " << a.Front() << " ";
+        cout << "Back: " << a.Back() << endl;
+
+        cout << "Enter the index you want to get: " << endl;
+        cin >> n;
+        cout << a.Get(n) << endl;
+
+        cout << "Enter the index you want to insert: " << endl;
+        cin >> n;
+        cout << "Enter value:";
+        cin >> value;
+        a.Insert(n, value);
+        cout << a;
+
+        cout << "Enter the number of nodes want to delete from front:" << endl;
+        cin >> n;
+
+        for (int i = 0; i < n; i++) {
+            a.DeleteFront();
+        }
+        cout << a;
+        cout << "Front: " << a.Front() << " ";
+        cout << "Back: " << a.Back() << endl;
+
+        cout << "Enter the number of nodes want to delete from back:" << endl;
+        cin >> n;
+
+        for (int i = 0; i < n; i++) {
+            a.DeleteBack();
+        }
+
+        cout << a;
+        cout << "Front: " << a.Front() << " ";
+        cout << "Back: " << a.Back() << endl;
+
+        cout << "Enter the index you want to delete: " << endl;
+        cin >> n;
+        a.Delete(n);
+        cout << a;
+
+        cout << "Test Iterator:" << endl;
+
+        int j = 0;
+        for (List<int>::Iterator i = a.Begin(); i != a.End(); i++) {
+            cout << "Node " << j << " data is " << *i << endl;
+            j++;
+        }
+
+        cout << "Test destructor:" << endl;
+        a.~List();
+        cout << a;
+
+    } else if (type == 2) {
+        List<float> a;
+        float value;
+
+        cout << "Enter the number of nodes want to insert from front:" << endl;
+        cin >> n;
+
+        for (int i = 0; i < n; i++) {
+            cout << "Enter value:";
+            cin >> value;
+            a.InsertFront(value);
+        }
+        cout << a;
+        cout << "Front: " << a.Front() << " ";
+        cout << "Back: " << a.Back() << endl;
+
+        cout << "Enter the index you want to get: " << endl;
+        cin >> n;
+        cout << a.Get(n) << endl;
+
+        cout << "Enter the index you want to insert: " << endl;
+        cin >> n;
+        cout << "Enter value:";
+        cin >> value;
+        a.Insert(n, value);
+        cout << a;
+
+        cout << "Enter the number of nodes want to delete from front:" << endl;
+        cin >> n;
+
+        for (int i = 0; i < n; i++) {
+            a.DeleteFront();
+        }
+        cout << a;
+        cout << "Front: " << a.Front() << " ";
+        cout << "Back: " << a.Back() << endl;
+
+        cout << "Enter the number of nodes want to delete from back:" << endl;
+        cin >> n;
+
+        for (int i = 0; i < n; i++) {
+            a.DeleteBack();
+        }
+
+        cout << a;
+        cout << "Front: " << a.Front() << " ";
+        cout << "Back: " << a.Back() << endl;
+
+        cout << "Enter the index you want to delete: " << endl;
+        cin >> n;
+        a.Delete(n);
+        cout << a;
+
+        cout << "Test Iterator:" << endl;
+
+        int j = 0;
+        for (List<float>::Iterator i = a.Begin(); i != a.End(); i++) {
+            cout << "Node " << j << " data is " << *i << endl;
+            j++;
+        }
+
+        cout << "Test destructor:" << endl;
+        a.~List();
+        cout << a;
+
+    }
+    return 0;
 }
 
 
